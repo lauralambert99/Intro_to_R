@@ -1,9 +1,798 @@
 ---
-title: "Intro_to_R"
+title: "Flexible R code for Assessment Practitioners"
+author: Laura Lambert
+institute: James Madison University
+format: 
+  revealjs:
+    theme: default
+title-slide-attributes:
+      data-background-image: rsz_1rsz_lakeview_overview.jpg
+      data-background-opacity: "0.5"
 ---
 
-## Quarto
+```{r, setup}
+library(ggplot2)
+library(tidyverse)
+library(qualtRics)
+```
+
+## Overview {auto-animate="true" auto-animate-easing="ease-in-out"}
+
+::: incremental
+-   Who are you?
+-   What will we be doing for the next hour?
+-   Will I become an R expert?
+-   Is this going to be scary?
+:::
+
+## Overview
+:::{.r-fit-text}
+Who am I?
+:::
+
+## Who I am not
+:::{.incremental}
+  - An Expert Coder
+  - A computer science major
+  - Someone who has received formal training in how to 'properly' code
+:::
+
+## Who I am
+:::{.incremental}
+
+  - Doctoral candidate in James Madison University's Assessment & Measurement program
+  - Full-time A&P faculty in Integrated Science and Technology (also at JMU)
+  - Assessment (and measurement) enthusiast
+  - Really good at crafting Google search terms
+  - Someone who enjoys using available tools to make my life easier!
+:::
+
+## Overview {auto-animate="true" auto-animate-easing="ease-in-out"}
+
+![](cycle.svg){data-id="icon1" fig-align="center" auto-animate-delay="0" style="width: 250px; height: 250px; margin: 10px;"}
+
+::: {style="text-align: center;"}
+<p>Contextualize this in the Assessment Cycle</p>
+:::
+
+## Overview {auto-animate="true" auto-animate-easing="ease-in-out"}
+
+![](survey.svg){data-id="icon2" fig-align="center" auto-animate-delay="0" style="width: 250px; height: 250px; margin: 10px;"}
+
+::: {style="text-align: center;"}
+<p>Gather some data from you</p>
+:::
+
+::: r-hstack
+![](cycle.svg){data-id="icon1" auto-animate-delay="0" style="width: 75px; height: 75px; margin: 10px;"}
+:::
+
+## Overview {auto-animate="true" auto-animate-easing="ease-in-out"}
+
+![](person_computer.svg){data-id="icon3" fig-align="center" auto-animate-delay="0.2" style="width: 250px; height: 250px; margin: 10px;"}
+
+::: {style="text-align: center;"}
+<p>Overview of R and R Studio</p>
+:::
+
+::: r-hstack
+![](cycle.svg){data-id="icon1" auto-animate-delay="0" style="width: 75px; height: 75px; margin: 10px;"}
+
+![](survey.svg){data-id="icon2" auto-animate-delay="0" style="width: 75px; height: 75px; margin: 10px;"}
+:::
+
+## Overview {auto-animate="true" auto-animate-easing="ease-in-out"}
+
+![](venn.svg){data-id="icon4" fig-align="center" auto-animate-delay="0.2" style="width: 250px; height: 250px; margin: 10px;"}
+
+::: {style="text-align: center;"}
+<p>Comparison of R to other programs</p>
+:::
+
+::: r-hstack
+![](cycle.svg){data-id="icon1" auto-animate-delay="0" style="width: 75px; height: 75px; margin: 10px;"}
+
+![](survey.svg){data-id="icon2" auto-animate-delay="0" style="width: 75px; height: 75px; margin: 10px;"}
+
+![](person_computer.svg){data-id="icon3" auto-animate-delay="0" style="width: 75px; height: 75px; margin: 10px;"}
+:::
+
+## Overview {auto-animate="true" auto-animate-easing="ease-in-out"}
+
+![](books.svg){data-id="icon5" fig-align="center" auto-animate-delay="0.2" style="width: 250px; height: 250px; margin: 10px;"}
+
+::: {style="text-align: center;"}
+<p>Share some resources</p>
+:::
+
+::: r-hstack
+![](cycle.svg){data-id="icon1" auto-animate-delay="0" style="width: 75px; height: 75px; margin: 10px;"}
+
+![](survey.svg){data-id="icon2" auto-animate-delay="0" style="width: 75px; height: 75px; margin: 10px;"}
+
+![](person_computer.svg){data-id="icon3" auto-animate-delay="0" style="width: 75px; height: 75px; margin: 10px;"}
+
+![](venn.svg){data-id="icon4" auto-animate-delay="0" style="width: 75px; height: 75px; margin: 10px;"}
+:::
+
+## Overview {auto-animate="true" auto-animate-easing="ease-in-out"}
+
+![](computer.svg){data-id="icon6" fig-align="center" auto-animate-delay="0.2" style="width: 250px; height: 250px; margin: 10px;"}
+
+::: {style="text-align: center;"}
+<p>Live walk-through</p>
+:::
+
+::: r-hstack
+![](cycle.svg){data-id="icon1" auto-animate-delay="0" style="width: 75px; height: 75px; margin: 10px;"}
+
+![](survey.svg){data-id="icon2" auto-animate-delay="0" style="width: 75px; height: 75px; margin: 10px;"}
+
+![](person_computer.svg){data-id="icon3" auto-animate-delay="0" style="width: 75px; height: 75px; margin: 10px;"}
+
+![](venn.svg){data-id="icon4" auto-animate-delay="0" style="width: 75px; height: 75px; margin: 10px;"}
+
+![](books.svg){data-id="icon5" auto-animate-delay="0" style="width: 75px; height: 75px; margin: 10px;"}
+:::
+
+## Overview {auto-animate="true" auto-animate-easing="ease-in-out"}
+
+![](question.svg){data-id="icon7" fig-align="center" auto-animate-delay="0.2" style="width: 250px; height: 250px; margin: 10px;"}
+
+::: {style="text-align: center;"}
+<p>Time for questions</p>
+:::
+
+::: r-hstack
+![](cycle.svg){data-id="icon1" auto-animate-delay="0" style="width: 75px; height: 75px; margin: 10px;"}
+
+![](survey.svg){data-id="icon2" auto-animate-delay="0" style="width: 75px; height: 75px; margin: 10px;"}
+
+![](person_computer.svg){data-id="icon3" auto-animate-delay="0" style="width: 75px; height: 75px; margin: 10px;"}
+
+![](venn.svg){data-id="icon4" auto-animate-delay="0" style="width: 75px; height: 75px; margin: 10px;"}
+
+![](books.svg){data-id="icon5" auto-animate-delay="0" style="width: 75px; height: 75px; margin: 10px;"}
+
+![](computer.svg){data-id="icon6" auto-animate-delay="0" style="width: 75px; height: 75px; margin: 10px;"}
+:::
+
+## Overview {auto-animate="true" auto-animate-easing="ease-in-out"}
+
+::: {style="text-align: center;"}
+<p>Let's get started!</p>
+:::
+
+::: r-hstack
+![](cycle.svg){data-id="icon1" auto-animate-delay="0" style="width: 75px; height: 75px; margin: 10px;"}
+
+![](survey.svg){data-id="icon2" auto-animate-delay="0" style="width: 75px; height: 75px; margin: 10px;"}
+
+![](person_computer.svg){data-id="icon3" auto-animate-delay="0" style="width: 75px; height: 75px; margin: 10px;"}
+
+![](venn.svg){data-id="icon4" auto-animate-delay="0" style="width: 75px; height: 75px; margin: 10px;"}
+
+![](books.svg){data-id="icon5" auto-animate-delay="0" style="width: 75px; height: 75px; margin: 10px;"}
+
+![](computer.svg){data-id="icon6" auto-animate-delay="0" style="width: 75px; height: 75px; margin: 10px;"}
+
+![](question.svg){data-id="icon7" auto-animate-delay="0" style="width: 75px; height: 75px; margin: 10px;"}
+:::
+
+## Assessment Cycle {auto-animate="true"}
+
+::: r-stack
+::: {.fragment .fade-in-then-semi-out}
+![](Asmt_cycle.svg)
+:::
+
+::: {.fragment .fade-in}
+::: {.fragment .grow}
+![](Asmt_cycle_zoom.svg)
+:::
+:::
+:::
+
+## Assessment Cycle: Analyze Data
+
+::: columns
+::: column
+![](excel.png)
+:::
+
+::: column
+::: fragment
+![](spss.png)
+:::
+:::
+:::
+
+## First Survey Question{.center}
+These are just for fun - we'll be illustrating some code later with this data
+
+![](Q1.png){fig-align="center"}
+
+## Introduction to R and R Studio
+:::{.incremental}
+-   R is a programming language
+-   R Studio is an IDE - a user-friendly interface
+-   Both R and R Studio are free and open source
+:::
+
+::: notes
+Think of the difference between linux and windows machines, as an example Or, creating a website using pure html vs. Wix
+:::
+
+## Where to find them
+
+<https://posit.co/download/rstudio-desktop/>
+
+![](rstudio.png)
+
+::: notes
+Click to the website, and show the two different things. In particular, show the CRAN mirrors - it doesn't matter which one you choose. Promise.
+:::
+
+## R Studio window
+
+**insert screen grab here**
+
+::: notes
+Move from here into an actual blank, new session of R. Walk-through the four screens briefly.
+:::
+
+## Script vs. Project{auto-animate=true}
+
+  - A script file is a set of instructions
+
+## Script vs. Project{.center auto-animate=true}
+
+![](script.png)
+
+
+## Script vs. Project{auto-animate=true}
+
+  - A script file is a set of instructions
+  - A project is a directory (folder)
+
+
+## Script vs. Project{auto-animate=true}
+![](r_project.png)
+
+## Script vs. Project{auto-animate=true}
+
+  - A script file is a set of instructions
+  - A project is a directory (folder)
+    - Script(s)
+    - Data
+    - Output
+    - Anything, really
+
+:::{.notes}
+Projects can make sharing and reading in files easier - you just have to call them.
+You can still call other files not in your project
+But, having a bajilion folders can get annoying, too
+Especially if all you want to do is a quick analysis
+:::
+
+## Script vs. Project
+Main difference: calling files
+
+:::{.fragment}
+Script file
+
+`df <- read.csv("path/to/data/here.csv")`
+:::
+
+:::{.fragment}
+Project
+
+`df <- read.csv("file.csv")`
+:::
+
+## Base R and Packages
+
+::: incremental
+-   'base' R has quite a bit of functionality on its own
+-   'packages' extend what base R can do
+    -   Specialized collections of functions (e.g. `psych`, `lavaan`)
+    -   Make data wrangling and visualization easier (e.g. `tidyverse`, `ggplot2`)
+    -   Advanced analysis (e.g. `lme4`, `brms`)
+:::
+
+## Installing and Loading Packages
+
+::: notes
+Packages aren't included in your initial install
+You also need to remind R they exist, and that you want to use them
+Code highlighting here - first for install, then library
+:::
 
 ```{r}
-1 + 1
+#| eval: FALSE
+#| echo: TRUE
+#| code-line-numbers: "|4|8"
+
+#Install a package
+#Only need to do this once on any given machine
+#If you switch machines (e.g. office to home computer) you'll need to re-install
+install.packages("ggplot2")
+
+#Call the package
+#You will need to call your packages for each R session
+library(ggplot2)
 ```
+
+## Installing and Loading Packages
+
+::: notes
+A useful trick is to have an area at the very top of your code where you just call in all your packages. This both lets you see what packages you need/are using but also lets you call all packages all at once.
+:::
+
+```{r}
+#| eval: FALSE
+#| echo: TRUE
+#| code-line-numbers: "|3-5"
+
+#Handy to have a 'set-up' area at the beginning of your code
+#Load necessary packages
+library(tidyverse)
+library(psych)
+library(car)
+
+#Then proceed with the rest of your code....
+```
+
+## Second Survey Question{.center}
+
+Feel free to be as honest or dishonest as you'd like here...
+
+::: notes
+Different type of data Use your real age, or make up a (semi-reasonable) number
+:::
+
+![](Q2.png){fig-align="center"}
+
+## Syntax
+![](scary.webp)
+(Source: "Columbus, C. (1990). Home Alone. Twentieth Century Fox".)
+
+## Syntax
+:::{.fragment}
+- Like many things, an up-front investment of time can save a lot of time long-term
+:::
+
+:::{.fragment}
+- MANY available resources for code
+:::
+
+:::{.fragment .fade-in}
+:::{.fragment .highlight-red}
+- Take and modify what you need
+:::
+:::
+
+## The Argument for Syntax
+
+Let's imagine two scenarios where you're trying to describe your work: **Do a tabset here**
+
+## The Argument for Syntax
+
+:::{.incremental .r-fit-text}
+1)  Documentation
+2)  Reproducability
+:::
+
+## Documentation
+
+```{r}
+#| echo: TRUE
+#| eval: FALSE
+#| code-line-numbers: "|4"
+
+#Comments can tell you what you did
+#Or, what dataset you read in
+
+#Read in dataset A
+data <- read.csv("groupA.csv")
+
+
+```
+
+## Documentation
+
+```{r}
+#| echo: FALSE
+
+#You can also leave comments about what data you dropped
+#And why you dropped it
+id <- 1:10
+sp_2024 <- c(3, NA, 5, 9, NA, 4, 9, 5, 5, 3)
+major <- c("BIO", "BIO", "HIST", "HIST", "HIST", "ART", "ART", "ART", "BUS", "BUS")
+test_data <- cbind(id, sp_2024)
+test_data <- as.data.frame(test_data)
+
+test_data_v2 <- cbind(id, sp_2024, major)
+test_data_v2 <- as.data.frame(test_data_v2)
+```
+
+```{r}
+#| echo: TRUE
+#| eval: FALSE
+#| code-line-numbers: "|1-2|4-5|7-9|11-13"
+
+#Read in data
+test_data <- read.csv("some/file/path.csv")
+
+#What does our data look like?
+head(test_data)
+
+#Take a peek at a variable
+#Check if any missing data
+table(test_data$sp_2024, useNA = "always")
+
+#Two missing values
+#Remove them from the data - can only have complete cases here
+test_data_clean <- na.omit(test_data)
+```
+
+## Documentation
+But, what if you had a different criteria?  What if you only removed them if some other variable was above/below a certain value?
+```{r}
+#| echo: TRUE
+#| eval: FALSE
+#| code-line-numbers: "|8|9-10"
+
+#Look for missing data
+table(test_data_v2$major, useNA = "always")
+
+#Also see how these map together
+table(test_data_v2$sp_2024, test_data_v2$major)
+
+#Switching thing up this time
+#Get rid of missing for all rows unless major is BIO
+test_data_clean_v2 <- test_data_v2[test_data_v2$major == "BIO" |
+                                     !is.na(test_data_v2$sp_2024),]
+```
+
+
+```{r}
+#| eval: FALSE
+#| echo: FALSE
+
+id <- 1:20
+pre <- round(rnorm(20, 68, 7.3), 1)
+post <- round(rnorm(20, 82, 5.2), 1)
+
+data1 <- data.frame(id = id, 
+                       pre = pre, 
+                       post = post)
+
+write.csv(data1, "data1.csv")
+
+id <- 1:27
+pre <- round(rnorm(27, 67.2, 7.1), 1)
+post <- round(rnorm(27, 86.7, 4.8), 1)
+
+data2 <- data.frame(id = id, 
+                       pre = pre, 
+                       post = post)
+
+write.csv(data2, "data2.csv")
+```
+
+## Reproducability
+
+::: notes
+Let's say you have a set workflow you do for your analyses - or at least a common enough one. Here, we might be evaluating a pre/post design. We'll read in the data, check distributions, and then run a t-test.
+:::
+
+```{r}
+#| echo: TRUE
+#| eval: FALSE
+#| code-line-numbers: "|2"
+
+#Read in data
+data1 <- read.csv("some_data.csv")
+
+#Examine distributions
+#Pre first
+ggplot(data = data1) +
+  geom_histogram(aes(pre))
+
+#Then post
+ggplot(data = data1) +
+  geom_histogram(aes(post))
+
+#Do a t-test
+t.test(data1$pre, data1$post, paired = TRUE)
+```
+
+## Reproducability
+
+::: notes
+Then with a quick copy/paste, or even just changing the file name, we can run the code again. No need to go back through creating the workflow - it's already there. Also, if your colleague/student/advisor wants to know how you did something, you can send them your R script file.
+:::
+
+```{r}
+#| echo: TRUE
+#| eval: FALSE
+#| code-line-numbers: "|2"
+
+#Read in data
+data1 <- read.csv("different_data.csv")
+
+#Examine distributions
+#Pre first
+ggplot(data = data1) +
+  geom_histogram(aes(pre))
+
+#Then post
+ggplot(data = data1) +
+  geom_histogram(aes(post))
+
+#Do a t-test
+t.test(data1$pre, data1$post, paired = TRUE)
+```
+
+## Excel vs. R
+
+:::{.incremental}
+  - Excel can hold a decent amount of data
+  - Functions aid in data analysis
+  - Pivot tables
+  - Built-in data visualization
+:::  
+
+## Excel vs. R
+
+But...
+
+. . . 
+
+How many times have you messed up an Excel sheet when trying to do an analysis and didn't realize it until too late?
+
+## Excel vs. R
+
+:::{.incremental}
+  - In Excel, you perform calculations and manipulations on your original dataset 
+    - Unless you save a copy!
+  - With R, manipulations don't affect the original dataset
+    - This was mind-blowing to me
+:::
+
+:::{.notes}
+If I made a mistake, I didn't have to panic - I could just pull the data back in and get to where I was in 30 seconds or less.  No such luck with Excel. 
+:::
+
+## Available R Resources
+
+:::{.incremental}
+  - A major benefit to R being open source: near infinite Google-ability
+  - Many other free resources if you wanted to learn more
+  - Can borrow code from other folks who have done it before
+    - No need to reinvent the wheel
+:::
+
+## Available R Resources
+Example: Google
+
+:::{.fragment}
+![](google.png)
+:::
+
+## Available R Resources
+Example: YouTube
+
+<https://www.youtube.com/>
+
+## Available R Resources
+Example: Course materials
+
+<https://bookdown.org/laura_lambert_99/intermediate_stats/>
+
+
+## Available R Resources
+Example: Giant repository of R books
+
+<https://www.bigbookofr.com/>
+
+## Available R Resources
+Example: R for Data Science book
+
+<https://r4ds.hadley.nz/>
+
+## Available R Resources
+Example: GitHub for this presentation!
+
+## Example Use Case
+
+:::{.incremental}
+  - Quick dive into some code, then we'll come back up
+  - Newer package: `qualtRics`
+  - Allows you to pull survey data straight into R for analysis
+:::
+
+## Example Use Case
+
+```{r}
+#| echo: TRUE
+#| eval: FALSE
+#| code-line-numbers: "|2|5|6"
+
+#Call the package
+library(qualtRics)
+
+#This is an initial set-up - only need to do once per machine!
+qualtrics_api_credentials(api_key = "YOUR_KEY_HERE", 
+                          base_url = "URL.GOES.HERE",
+                          install = TRUE)
+```
+
+::: notes
+Show them where to get API key, and what the base URL is Let them know they may need to request permission from their org, first, before can get API key Screen-grab my screen - hash out the API key (ask Jordan about this)
+:::
+
+## Example Use Case
+
+![](qualtrics_screen.png)
+
+## Example Use Case
+
+```{r}
+#| echo: TRUE
+#| eval: FALSE
+
+#See what surveys are associated with your account
+#Here, saving to an object
+surveys <- all_surveys()
+
+#We can see what the column names are
+names(surveys)
+
+#And then see what surveys we have
+surveys$name
+```
+
+
+## Example Use Case
+
+```{r}
+#| echo: TRUE
+#| eval: FALSE
+#| code-line-numbers: "3"
+
+#See what surveys are associated with your account
+#Here, saving to an object
+surveys <- all_surveys()
+
+#We can see what the column names are
+names(surveys)
+
+#And then see what surveys we have
+surveys$name
+```
+
+```{r}
+surveys <- all_surveys()
+```
+
+## Example Use Case
+
+```{r}
+#| echo: TRUE
+#| eval: FALSE
+#| code-line-numbers: "6"
+
+#See what surveys are associated with your account
+#Here, saving to an object
+surveys <- all_surveys()
+
+#We can see what the column names are
+names(surveys)
+
+#And then see what surveys we have
+surveys$name
+```
+
+```{r}
+names(surveys)
+```
+
+## Example Use Case
+
+```{r}
+#| echo: TRUE
+#| eval: FALSE
+#| code-line-numbers: "9"
+
+#See what surveys are associated with your account
+#Here, saving to an object
+surveys <- all_surveys()
+
+#We can see what the column names are
+names(surveys)
+
+#And then see what surveys we have
+surveys$name
+```
+
+```{r}
+surveys$name
+```
+
+## Example Use Case
+
+```{r}
+#| echo: TRUE
+#| eval: TRUE
+
+#Get survey data
+survey_data <- fetch_survey(surveyID = surveys$id[8])
+```
+
+::: notes
+But, its EVERYTHING. And many times, we don't necessarily need all of it. Maybe we just want the questions, or even just a subset of questions.
+:::
+
+## Example Use Case
+
+```{r}
+#| echo: TRUE
+#| eval: TRUE
+
+#Save question names to an object
+questions <- survey_questions(surveyID = surveys$id[8])
+
+#See what the questions are
+print(questions)
+
+```
+
+## Example Use Case
+
+```{r}
+#| code-line-numbers: "|2|3"
+#| echo: TRUE
+#| eval: TRUE
+
+#Now, we can do things!
+table(survey_data$Q1)
+
+```
+
+::: notes
+Here, we are only asking for one question - not all the extra associated time/date data.
+:::
+
+## Parting Thoughts Before Demo
+
+::: incremental
+-   You don't need to be an expert in R to use it
+-   Use it however works for **you** - there isn't a "right" way
+-   Projects make things easier
+-   Don't reinvent the wheel!
+-   You'll learn real fast how well you spell
+:::
+
+## Last Survey Question{.center}
+Last bit of data!
+
+![](Q3Q4.png){fig-align="center"}
+
+## Live Demo time
+Now, let's run some code, using the data you have so kindly provided
+
+:::{.notes}
+Switch to R script
+ADD LINK!  "If you want to follow along, here's some simulated data that has the same characteristics to our data"
+:::
+
+## What questions can I answer for you now?
+**Add questioning owl?  OR! Tilted head dogs comic**
+
+## My Contact Info
+
+Laura Lambert [laycocla\@jmu.edu](mailto:laycocla@jmu.edu){.email}
+
+Add QR code to GitHub page for this, plus other resources Maybe add resources in the README on GitHub?
