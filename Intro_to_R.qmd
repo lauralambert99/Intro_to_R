@@ -5,6 +5,8 @@ institute: James Madison University
 format: 
   revealjs:
     theme: default
+    slide-tone: false
+    preview-links: auto
 title-slide-attributes:
       data-background-image: rsz_1rsz_lakeview_overview.jpg
       data-background-opacity: "0.5"
@@ -26,25 +28,27 @@ library(qualtRics)
 :::
 
 ## Overview
-:::{.r-fit-text}
+
+::: r-fit-text
 Who am I?
 :::
 
 ## Who I am not
-:::{.incremental}
-  - An Expert Coder
-  - A computer science major
-  - Someone who has received formal training in how to 'properly' code
+
+::: incremental
+-   An Expert Coder
+-   A computer science major
+-   Someone who has received formal training in how to 'properly' code
 :::
 
 ## Who I am
-:::{.incremental}
 
-  - Doctoral candidate in James Madison University's Assessment & Measurement program
-  - Full-time A&P faculty in Integrated Science and Technology (also at JMU)
-  - Assessment (and measurement) enthusiast
-  - Really good at crafting Google search terms
-  - Someone who enjoys using available tools to make my life easier!
+::: incremental
+-   Doctoral candidate in James Madison University's Assessment & Measurement program
+-   Full-time A&P faculty in Integrated Science and Technology (also at JMU)
+-   Assessment (and measurement) enthusiast
+-   Really good at crafting Google search terms
+-   Someone who enjoys using available tools to make my life easier!
 :::
 
 ## Overview {auto-animate="true" auto-animate-easing="ease-in-out"}
@@ -207,13 +211,15 @@ Who am I?
 :::
 :::
 
-## First Survey Question{.center}
+## First Survey Question {.center}
+
 These are just for fun - we'll be illustrating some code later with this data
 
 ![](Q1.png){fig-align="center"}
 
 ## Introduction to R and R Studio
-:::{.incremental}
+
+::: incremental
 -   R is a programming language
 -   R Studio is an IDE - a user-friendly interface
 -   Both R and R Studio are free and open source
@@ -235,56 +241,53 @@ Click to the website, and show the two different things. In particular, show the
 
 ## R Studio window
 
-**insert screen grab here**
+![](rstudio_window.png)
 
 ::: notes
 Move from here into an actual blank, new session of R. Walk-through the four screens briefly.
 :::
 
-## Script vs. Project{auto-animate=true}
+## Script vs. Project {auto-animate="true"}
 
-  - A script file is a set of instructions
+-   A script file is a set of instructions
 
-## Script vs. Project{.center auto-animate=true}
+## Script vs. Project {.center auto-animate="true"}
 
 ![](script.png)
 
+## Script vs. Project {auto-animate="true"}
 
-## Script vs. Project{auto-animate=true}
+-   A script file is a set of instructions
+-   A project is a directory (folder)
 
-  - A script file is a set of instructions
-  - A project is a directory (folder)
+## Script vs. Project {auto-animate="true"}
 
-
-## Script vs. Project{auto-animate=true}
 ![](r_project.png)
 
-## Script vs. Project{auto-animate=true}
+## Script vs. Project {auto-animate="true"}
 
-  - A script file is a set of instructions
-  - A project is a directory (folder)
-    - Script(s)
-    - Data
-    - Output
-    - Anything, really
+-   A script file is a set of instructions
+-   A project is a directory (folder)
+    -   Script(s)
+    -   Data
+    -   Output
+    -   Anything, really
 
-:::{.notes}
-Projects can make sharing and reading in files easier - you just have to call them.
-You can still call other files not in your project
-But, having a bajilion folders can get annoying, too
-Especially if all you want to do is a quick analysis
+::: notes
+Projects can make sharing and reading in files easier - you just have to call them. You can still call other files not in your project But, having a bajilion folders can get annoying, too Especially if all you want to do is a quick analysis
 :::
 
 ## Script vs. Project
+
 Main difference: calling files
 
-:::{.fragment}
+::: fragment
 Script file
 
 `df <- read.csv("path/to/data/here.csv")`
 :::
 
-:::{.fragment}
+::: fragment
 Project
 
 `df <- read.csv("file.csv")`
@@ -303,9 +306,7 @@ Project
 ## Installing and Loading Packages
 
 ::: notes
-Packages aren't included in your initial install
-You also need to remind R they exist, and that you want to use them
-Code highlighting here - first for install, then library
+Packages aren't included in your initial install You also need to remind R they exist, and that you want to use them Code highlighting here - first for install, then library
 :::
 
 ```{r}
@@ -343,7 +344,7 @@ library(car)
 #Then proceed with the rest of your code....
 ```
 
-## Second Survey Question{.center}
+## Second Survey Question {.center}
 
 Feel free to be as honest or dishonest as you'd like here...
 
@@ -354,31 +355,58 @@ Different type of data Use your real age, or make up a (semi-reasonable) number
 ![](Q2.png){fig-align="center"}
 
 ## Syntax
-![](scary.webp)
-(Source: "Columbus, C. (1990). Home Alone. Twentieth Century Fox".)
+
+![](scary.webp) (Source: "Columbus, C. (1990). Home Alone. Twentieth Century Fox".)
 
 ## Syntax
-:::{.fragment}
-- Like many things, an up-front investment of time can save a lot of time long-term
+
+::: fragment
+-   Like many things, an up-front investment of time can save a lot of time long-term
 :::
 
-:::{.fragment}
-- MANY available resources for code
+::: fragment
+-   MANY available resources for code
 :::
 
-:::{.fragment .fade-in}
-:::{.fragment .highlight-red}
-- Take and modify what you need
+::: {.fragment .fade-in}
+::: {.fragment .highlight-red}
+-   Take and modify what you need
 :::
 :::
 
 ## The Argument for Syntax
 
-Let's imagine two scenarios where you're trying to describe your work: **Do a tabset here**
+Let's imagine two scenarios where you're trying to describe your work:
+
+::: panel-tabset
+## Scenario 1
+
+So, you have this Excel file and you want to make a formula in one of the cells to sum up the 'pre' and 'post' columns. Then, you need to reverse score one of the items, so you have to make that, then go ahead and delete the old column and put the new one in its place. Then, to do a t-test, you use this formula across these columns....
+
+## Scenario 2
+
+Do this:
+
+```{r}
+#| echo: true
+#| eval: false
+
+#Get data
+data <- readxl("some_Excel_file.xlsx")
+
+#Sum pre and post
+pre_sum <- sum(data$pre)
+post_sum <- sum(data$post)
+
+#Reverse score
+data$r_item3 <- 6 - data$item3
+
+```
+:::
 
 ## The Argument for Syntax
 
-:::{.incremental .r-fit-text}
+::: {.incremental .r-fit-text}
 1)  Documentation
 2)  Reproducability
 :::
@@ -437,7 +465,9 @@ test_data_clean <- na.omit(test_data)
 ```
 
 ## Documentation
-But, what if you had a different criteria?  What if you only removed them if some other variable was above/below a certain value?
+
+But, what if you had a different criteria? What if you only removed them if some other variable was above/below a certain value?
+
 ```{r}
 #| echo: TRUE
 #| eval: FALSE
@@ -454,7 +484,6 @@ table(test_data_v2$sp_2024, test_data_v2$major)
 test_data_clean_v2 <- test_data_v2[test_data_v2$major == "BIO" |
                                      !is.na(test_data_v2$sp_2024),]
 ```
-
 
 ```{r}
 #| eval: FALSE
@@ -537,80 +566,87 @@ t.test(data1$pre, data1$post, paired = TRUE)
 
 ## Excel vs. R
 
-:::{.incremental}
-  - Excel can hold a decent amount of data
-  - Functions aid in data analysis
-  - Pivot tables
-  - Built-in data visualization
-:::  
+::: incremental
+-   Excel can hold a decent amount of data
+-   Functions aid in data analysis
+-   Pivot tables
+-   Built-in data visualization
+:::
 
 ## Excel vs. R
 
 But...
 
-. . . 
+. . .
 
 How many times have you messed up an Excel sheet when trying to do an analysis and didn't realize it until too late?
 
 ## Excel vs. R
 
-:::{.incremental}
-  - In Excel, you perform calculations and manipulations on your original dataset 
-    - Unless you save a copy!
-  - With R, manipulations don't affect the original dataset
-    - This was mind-blowing to me
+::: incremental
+-   In Excel, you perform calculations and manipulations on your original dataset
+    -   Unless you save a copy!
+-   With R, manipulations don't affect the original dataset
+    -   This was mind-blowing to me
 :::
 
-:::{.notes}
-If I made a mistake, I didn't have to panic - I could just pull the data back in and get to where I was in 30 seconds or less.  No such luck with Excel. 
+::: notes
+If I made a mistake, I didn't have to panic - I could just pull the data back in and get to where I was in 30 seconds or less. No such luck with Excel.
+:::
+
+## Available R Resources
+
+::: incremental
+-   A major benefit to R being open source: near infinite Google-ability
+-   Many other free resources if you wanted to learn more
+-   Can borrow code from other folks who have done it before
+    -   No need to reinvent the wheel
 :::
 
 ## Available R Resources
 
-:::{.incremental}
-  - A major benefit to R being open source: near infinite Google-ability
-  - Many other free resources if you wanted to learn more
-  - Can borrow code from other folks who have done it before
-    - No need to reinvent the wheel
-:::
-
-## Available R Resources
 Example: Google
 
-:::{.fragment}
+::: fragment
 ![](google.png)
 :::
 
 ## Available R Resources
+
 Example: YouTube
 
 <https://www.youtube.com/>
 
 ## Available R Resources
+
 Example: Course materials
 
 <https://bookdown.org/laura_lambert_99/intermediate_stats/>
 
-
 ## Available R Resources
+
 Example: Giant repository of R books
 
 <https://www.bigbookofr.com/>
 
 ## Available R Resources
+
 Example: R for Data Science book
 
 <https://r4ds.hadley.nz/>
 
 ## Available R Resources
+
 Example: GitHub for this presentation!
+
+<https://github.com/lauralambert99/Intro_to_R>
 
 ## Example Use Case
 
-:::{.incremental}
-  - Quick dive into some code, then we'll come back up
-  - Newer package: `qualtRics`
-  - Allows you to pull survey data straight into R for analysis
+::: incremental
+-   Quick dive into some code, then we'll come back up
+-   Newer package: `qualtRics`
+-   Allows you to pull survey data straight into R for analysis
 :::
 
 ## Example Use Case
@@ -653,7 +689,6 @@ names(surveys)
 #And then see what surveys we have
 surveys$name
 ```
-
 
 ## Example Use Case
 
@@ -775,24 +810,58 @@ Here, we are only asking for one question - not all the extra associated time/da
 -   You'll learn real fast how well you spell
 :::
 
-## Last Survey Question{.center}
+## Last Survey Question {.center}
+
 Last bit of data!
 
 ![](Q3Q4.png){fig-align="center"}
 
+## You Promised Flexibility!
+
+creative_name <- read.csv("some/data/file.csv")
+
+## You Promised Flexibility!
+
+<font color="red">creative_name</font> <- read.csv("some/data/file.csv")
+
+## You Promised Flexibility!
+
+creative_name <font color="red"><-</font> read.csv("some/data/file.csv")
+
+## You Promised Flexibility!
+
+creative_name <- <font color="red">read.csv</font>("some/data/file.csv")
+
+## You Promised Flexibility!
+
+creative_name <- read.csv<font color="red">("some/data/file.csv")</font>
+
+## You Promised Flexibility!
+
+creative_name$some_variable
+
+## You Promised Flexibility!
+
+<font color="red">creative_name</font>$some_variable
+
+## You Promised Flexibility!
+
+creative_name$<font color="red">some_variable</font>
+
 ## Live Demo time
+
 Now, let's run some code, using the data you have so kindly provided
 
-:::{.notes}
-Switch to R script
-ADD LINK!  "If you want to follow along, here's some simulated data that has the same characteristics to our data"
+If you want to run it on your computer, access some fake data here: <https://bit.ly/3NINVha>
+
+::: notes
+Switch to R script ADD LINK! "If you want to follow along, here's some simulated data that has the same characteristics to our data"
 :::
 
 ## What questions can I answer for you now?
-**Add questioning owl?  OR! Tilted head dogs comic**
+
+![](dogs.jpg)
 
 ## My Contact Info
 
 Laura Lambert [laycocla\@jmu.edu](mailto:laycocla@jmu.edu){.email}
-
-Add QR code to GitHub page for this, plus other resources Maybe add resources in the README on GitHub?

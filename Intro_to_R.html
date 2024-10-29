@@ -657,8 +657,8 @@ Let’s get started!
 </section>
 <section id="r-studio-window" class="slide level2">
 <h2>R Studio window</h2>
-<p><strong>insert screen grab here</strong></p>
-<aside class="notes">
+
+<img data-src="rstudio_window.png" class="r-stretch"><aside class="notes">
 <p>Move from here into an actual blank, new session of R. Walk-through the four screens briefly.</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
@@ -840,7 +840,29 @@ Let’s get started!
 </section>
 <section id="the-argument-for-syntax" class="slide level2">
 <h2>The Argument for Syntax</h2>
-<p>Let’s imagine two scenarios where you’re trying to describe your work: <strong>Do a tabset here</strong></p>
+<p>Let’s imagine two scenarios where you’re trying to describe your work:</p>
+<div class="panel-tabset">
+<ul id="tabset-1" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-1-1">Scenario 1</a></li><li><a href="#tabset-1-2">Scenario 2</a></li></ul>
+<div class="tab-content">
+<div id="tabset-1-1">
+<p>So, you have this Excel file and you want to make a formula in one of the cells to sum up the ‘pre’ and ‘post’ columns. Then, you need to reverse score one of the items, so you have to make that, then go ahead and delete the old column and put the new one in its place. Then, to do a t-test, you use this formula across these columns….</p>
+</div>
+<div id="tabset-1-2">
+<p>Do this:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href=""></a><span class="co">#Get data</span></span>
+<span id="cb3-2"><a href=""></a>data <span class="ot">&lt;-</span> <span class="fu">readxl</span>(<span class="st">"some_Excel_file.xlsx"</span>)</span>
+<span id="cb3-3"><a href=""></a></span>
+<span id="cb3-4"><a href=""></a><span class="co">#Sum pre and post</span></span>
+<span id="cb3-5"><a href=""></a>pre_sum <span class="ot">&lt;-</span> <span class="fu">sum</span>(data<span class="sc">$</span>pre)</span>
+<span id="cb3-6"><a href=""></a>post_sum <span class="ot">&lt;-</span> <span class="fu">sum</span>(data<span class="sc">$</span>post)</span>
+<span id="cb3-7"><a href=""></a></span>
+<span id="cb3-8"><a href=""></a><span class="co">#Reverse score</span></span>
+<span id="cb3-9"><a href=""></a>data<span class="sc">$</span>r_item3 <span class="ot">&lt;-</span> <span class="dv">6</span> <span class="sc">-</span> data<span class="sc">$</span>item3</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</div>
+</div>
 </section>
 <section id="the-argument-for-syntax-1" class="slide level2">
 <h2>The Argument for Syntax</h2>
@@ -854,45 +876,45 @@ Let’s get started!
 <section id="documentation" class="slide level2">
 <h2>Documentation</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb3" data-code-line-numbers="|4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href=""></a><span class="co">#Comments can tell you what you did</span></span>
-<span id="cb3-2"><a href=""></a><span class="co">#Or, what dataset you read in</span></span>
-<span id="cb3-3"><a href=""></a></span>
-<span id="cb3-4"><a href=""></a><span class="co">#Read in dataset A</span></span>
-<span id="cb3-5"><a href=""></a>data <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"groupA.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb4" data-code-line-numbers="|4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href=""></a><span class="co">#Comments can tell you what you did</span></span>
+<span id="cb4-2"><a href=""></a><span class="co">#Or, what dataset you read in</span></span>
+<span id="cb4-3"><a href=""></a></span>
+<span id="cb4-4"><a href=""></a><span class="co">#Read in dataset A</span></span>
+<span id="cb4-5"><a href=""></a>data <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"groupA.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="documentation-1" class="slide level2">
 <h2>Documentation</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb4" data-code-line-numbers="|1-2|4-5|7-9|11-13"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href=""></a><span class="co">#Read in data</span></span>
-<span id="cb4-2"><a href=""></a>test_data <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"some/file/path.csv"</span>)</span>
-<span id="cb4-3"><a href=""></a></span>
-<span id="cb4-4"><a href=""></a><span class="co">#What does our data look like?</span></span>
-<span id="cb4-5"><a href=""></a><span class="fu">head</span>(test_data)</span>
-<span id="cb4-6"><a href=""></a></span>
-<span id="cb4-7"><a href=""></a><span class="co">#Take a peek at a variable</span></span>
-<span id="cb4-8"><a href=""></a><span class="co">#Check if any missing data</span></span>
-<span id="cb4-9"><a href=""></a><span class="fu">table</span>(test_data<span class="sc">$</span>sp_2024, <span class="at">useNA =</span> <span class="st">"always"</span>)</span>
-<span id="cb4-10"><a href=""></a></span>
-<span id="cb4-11"><a href=""></a><span class="co">#Two missing values</span></span>
-<span id="cb4-12"><a href=""></a><span class="co">#Remove them from the data - can only have complete cases here</span></span>
-<span id="cb4-13"><a href=""></a>test_data_clean <span class="ot">&lt;-</span> <span class="fu">na.omit</span>(test_data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb5" data-code-line-numbers="|1-2|4-5|7-9|11-13"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href=""></a><span class="co">#Read in data</span></span>
+<span id="cb5-2"><a href=""></a>test_data <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"some/file/path.csv"</span>)</span>
+<span id="cb5-3"><a href=""></a></span>
+<span id="cb5-4"><a href=""></a><span class="co">#What does our data look like?</span></span>
+<span id="cb5-5"><a href=""></a><span class="fu">head</span>(test_data)</span>
+<span id="cb5-6"><a href=""></a></span>
+<span id="cb5-7"><a href=""></a><span class="co">#Take a peek at a variable</span></span>
+<span id="cb5-8"><a href=""></a><span class="co">#Check if any missing data</span></span>
+<span id="cb5-9"><a href=""></a><span class="fu">table</span>(test_data<span class="sc">$</span>sp_2024, <span class="at">useNA =</span> <span class="st">"always"</span>)</span>
+<span id="cb5-10"><a href=""></a></span>
+<span id="cb5-11"><a href=""></a><span class="co">#Two missing values</span></span>
+<span id="cb5-12"><a href=""></a><span class="co">#Remove them from the data - can only have complete cases here</span></span>
+<span id="cb5-13"><a href=""></a>test_data_clean <span class="ot">&lt;-</span> <span class="fu">na.omit</span>(test_data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="documentation-2" class="slide level2">
 <h2>Documentation</h2>
 <p>But, what if you had a different criteria? What if you only removed them if some other variable was above/below a certain value?</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb5" data-code-line-numbers="|8|9-10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href=""></a><span class="co">#Look for missing data</span></span>
-<span id="cb5-2"><a href=""></a><span class="fu">table</span>(test_data_v2<span class="sc">$</span>major, <span class="at">useNA =</span> <span class="st">"always"</span>)</span>
-<span id="cb5-3"><a href=""></a></span>
-<span id="cb5-4"><a href=""></a><span class="co">#Also see how these map together</span></span>
-<span id="cb5-5"><a href=""></a><span class="fu">table</span>(test_data_v2<span class="sc">$</span>sp_2024, test_data_v2<span class="sc">$</span>major)</span>
-<span id="cb5-6"><a href=""></a></span>
-<span id="cb5-7"><a href=""></a><span class="co">#Switching thing up this time</span></span>
-<span id="cb5-8"><a href=""></a><span class="co">#Get rid of missing for all rows unless major is BIO</span></span>
-<span id="cb5-9"><a href=""></a>test_data_clean_v2 <span class="ot">&lt;-</span> test_data_v2[test_data_v2<span class="sc">$</span>major <span class="sc">==</span> <span class="st">"BIO"</span> <span class="sc">|</span></span>
-<span id="cb5-10"><a href=""></a>                                     <span class="sc">!</span><span class="fu">is.na</span>(test_data_v2<span class="sc">$</span>sp_2024),]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb6" data-code-line-numbers="|8|9-10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href=""></a><span class="co">#Look for missing data</span></span>
+<span id="cb6-2"><a href=""></a><span class="fu">table</span>(test_data_v2<span class="sc">$</span>major, <span class="at">useNA =</span> <span class="st">"always"</span>)</span>
+<span id="cb6-3"><a href=""></a></span>
+<span id="cb6-4"><a href=""></a><span class="co">#Also see how these map together</span></span>
+<span id="cb6-5"><a href=""></a><span class="fu">table</span>(test_data_v2<span class="sc">$</span>sp_2024, test_data_v2<span class="sc">$</span>major)</span>
+<span id="cb6-6"><a href=""></a></span>
+<span id="cb6-7"><a href=""></a><span class="co">#Switching thing up this time</span></span>
+<span id="cb6-8"><a href=""></a><span class="co">#Get rid of missing for all rows unless major is BIO</span></span>
+<span id="cb6-9"><a href=""></a>test_data_clean_v2 <span class="ot">&lt;-</span> test_data_v2[test_data_v2<span class="sc">$</span>major <span class="sc">==</span> <span class="st">"BIO"</span> <span class="sc">|</span></span>
+<span id="cb6-10"><a href=""></a>                                     <span class="sc">!</span><span class="fu">is.na</span>(test_data_v2<span class="sc">$</span>sp_2024),]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="reproducability" class="slide level2">
@@ -911,20 +933,20 @@ Let’s get started!
           display:block!important;
       }</style></aside>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb6" data-code-line-numbers="|2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href=""></a><span class="co">#Read in data</span></span>
-<span id="cb6-2"><a href=""></a>data1 <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"some_data.csv"</span>)</span>
-<span id="cb6-3"><a href=""></a></span>
-<span id="cb6-4"><a href=""></a><span class="co">#Examine distributions</span></span>
-<span id="cb6-5"><a href=""></a><span class="co">#Pre first</span></span>
-<span id="cb6-6"><a href=""></a><span class="fu">ggplot</span>(<span class="at">data =</span> data1) <span class="sc">+</span></span>
-<span id="cb6-7"><a href=""></a>  <span class="fu">geom_histogram</span>(<span class="fu">aes</span>(pre))</span>
-<span id="cb6-8"><a href=""></a></span>
-<span id="cb6-9"><a href=""></a><span class="co">#Then post</span></span>
-<span id="cb6-10"><a href=""></a><span class="fu">ggplot</span>(<span class="at">data =</span> data1) <span class="sc">+</span></span>
-<span id="cb6-11"><a href=""></a>  <span class="fu">geom_histogram</span>(<span class="fu">aes</span>(post))</span>
-<span id="cb6-12"><a href=""></a></span>
-<span id="cb6-13"><a href=""></a><span class="co">#Do a t-test</span></span>
-<span id="cb6-14"><a href=""></a><span class="fu">t.test</span>(data1<span class="sc">$</span>pre, data1<span class="sc">$</span>post, <span class="at">paired =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb7" data-code-line-numbers="|2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href=""></a><span class="co">#Read in data</span></span>
+<span id="cb7-2"><a href=""></a>data1 <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"some_data.csv"</span>)</span>
+<span id="cb7-3"><a href=""></a></span>
+<span id="cb7-4"><a href=""></a><span class="co">#Examine distributions</span></span>
+<span id="cb7-5"><a href=""></a><span class="co">#Pre first</span></span>
+<span id="cb7-6"><a href=""></a><span class="fu">ggplot</span>(<span class="at">data =</span> data1) <span class="sc">+</span></span>
+<span id="cb7-7"><a href=""></a>  <span class="fu">geom_histogram</span>(<span class="fu">aes</span>(pre))</span>
+<span id="cb7-8"><a href=""></a></span>
+<span id="cb7-9"><a href=""></a><span class="co">#Then post</span></span>
+<span id="cb7-10"><a href=""></a><span class="fu">ggplot</span>(<span class="at">data =</span> data1) <span class="sc">+</span></span>
+<span id="cb7-11"><a href=""></a>  <span class="fu">geom_histogram</span>(<span class="fu">aes</span>(post))</span>
+<span id="cb7-12"><a href=""></a></span>
+<span id="cb7-13"><a href=""></a><span class="co">#Do a t-test</span></span>
+<span id="cb7-14"><a href=""></a><span class="fu">t.test</span>(data1<span class="sc">$</span>pre, data1<span class="sc">$</span>post, <span class="at">paired =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="reproducability-1" class="slide level2">
@@ -943,20 +965,20 @@ Let’s get started!
           display:block!important;
       }</style></aside>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb7" data-code-line-numbers="|2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href=""></a><span class="co">#Read in data</span></span>
-<span id="cb7-2"><a href=""></a>data1 <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"different_data.csv"</span>)</span>
-<span id="cb7-3"><a href=""></a></span>
-<span id="cb7-4"><a href=""></a><span class="co">#Examine distributions</span></span>
-<span id="cb7-5"><a href=""></a><span class="co">#Pre first</span></span>
-<span id="cb7-6"><a href=""></a><span class="fu">ggplot</span>(<span class="at">data =</span> data1) <span class="sc">+</span></span>
-<span id="cb7-7"><a href=""></a>  <span class="fu">geom_histogram</span>(<span class="fu">aes</span>(pre))</span>
-<span id="cb7-8"><a href=""></a></span>
-<span id="cb7-9"><a href=""></a><span class="co">#Then post</span></span>
-<span id="cb7-10"><a href=""></a><span class="fu">ggplot</span>(<span class="at">data =</span> data1) <span class="sc">+</span></span>
-<span id="cb7-11"><a href=""></a>  <span class="fu">geom_histogram</span>(<span class="fu">aes</span>(post))</span>
-<span id="cb7-12"><a href=""></a></span>
-<span id="cb7-13"><a href=""></a><span class="co">#Do a t-test</span></span>
-<span id="cb7-14"><a href=""></a><span class="fu">t.test</span>(data1<span class="sc">$</span>pre, data1<span class="sc">$</span>post, <span class="at">paired =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb8" data-code-line-numbers="|2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href=""></a><span class="co">#Read in data</span></span>
+<span id="cb8-2"><a href=""></a>data1 <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"different_data.csv"</span>)</span>
+<span id="cb8-3"><a href=""></a></span>
+<span id="cb8-4"><a href=""></a><span class="co">#Examine distributions</span></span>
+<span id="cb8-5"><a href=""></a><span class="co">#Pre first</span></span>
+<span id="cb8-6"><a href=""></a><span class="fu">ggplot</span>(<span class="at">data =</span> data1) <span class="sc">+</span></span>
+<span id="cb8-7"><a href=""></a>  <span class="fu">geom_histogram</span>(<span class="fu">aes</span>(pre))</span>
+<span id="cb8-8"><a href=""></a></span>
+<span id="cb8-9"><a href=""></a><span class="co">#Then post</span></span>
+<span id="cb8-10"><a href=""></a><span class="fu">ggplot</span>(<span class="at">data =</span> data1) <span class="sc">+</span></span>
+<span id="cb8-11"><a href=""></a>  <span class="fu">geom_histogram</span>(<span class="fu">aes</span>(post))</span>
+<span id="cb8-12"><a href=""></a></span>
+<span id="cb8-13"><a href=""></a><span class="co">#Do a t-test</span></span>
+<span id="cb8-14"><a href=""></a><span class="fu">t.test</span>(data1<span class="sc">$</span>pre, data1<span class="sc">$</span>post, <span class="at">paired =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="excel-vs.-r" class="slide level2">
@@ -979,16 +1001,18 @@ Let’s get started!
 </section>
 <section id="excel-vs.-r-2" class="slide level2">
 <h2>Excel vs.&nbsp;R</h2>
+<div>
 <ul>
-<li>In Excel, you perform calculations and manipulations on your original dataset
+<li class="fragment">In Excel, you perform calculations and manipulations on your original dataset
 <ul>
-<li>Unless you save a copy!</li>
+<li class="fragment">Unless you save a copy!</li>
 </ul></li>
-<li>With R, manipulations don’t affect the original dataset
+<li class="fragment">With R, manipulations don’t affect the original dataset
 <ul>
-<li>This was mind-blowing to me</li>
+<li class="fragment">This was mind-blowing to me</li>
 </ul></li>
 </ul>
+</div>
 <aside class="notes">
 <p>If I made a mistake, I didn’t have to panic - I could just pull the data back in and get to where I was in 30 seconds or less. No such luck with Excel.</p>
 <style type="text/css">
@@ -1026,27 +1050,27 @@ Let’s get started!
 <section id="available-r-resources-2" class="slide level2">
 <h2>Available R Resources</h2>
 <p>Example: YouTube</p>
-<p>&lt;www.youtube.com&gt;</p>
+<p><a href="https://www.youtube.com/" class="uri">https://www.youtube.com/</a></p>
 </section>
 <section id="available-r-resources-3" class="slide level2">
 <h2>Available R Resources</h2>
-<p>Example: 605 stuff</p>
+<p>Example: Course materials</p>
+<p><a href="https://bookdown.org/laura_lambert_99/intermediate_stats/" class="uri">https://bookdown.org/laura_lambert_99/intermediate_stats/</a></p>
 </section>
 <section id="available-r-resources-4" class="slide level2">
 <h2>Available R Resources</h2>
-<p>Example: GitHub</p>
+<p>Example: Giant repository of R books</p>
+<p><a href="https://www.bigbookofr.com/" class="uri">https://www.bigbookofr.com/</a></p>
 </section>
 <section id="available-r-resources-5" class="slide level2">
 <h2>Available R Resources</h2>
-<p>Example: Giant repository of R books</p>
+<p>Example: R for Data Science book</p>
+<p><a href="https://r4ds.hadley.nz/" class="uri">https://r4ds.hadley.nz/</a></p>
 </section>
 <section id="available-r-resources-6" class="slide level2">
 <h2>Available R Resources</h2>
-<p>Example: R for Data Science book</p>
-</section>
-<section id="available-r-resources-7" class="slide level2">
-<h2>Available R Resources</h2>
 <p>Example: GitHub for this presentation!</p>
+<p><a href="https://github.com/lauralambert99/Intro_to_R" class="uri">https://github.com/lauralambert99/Intro_to_R</a></p>
 </section>
 <section id="example-use-case" class="slide level2">
 <h2>Example Use Case</h2>
@@ -1061,13 +1085,13 @@ Let’s get started!
 <section id="example-use-case-1" class="slide level2">
 <h2>Example Use Case</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb8" data-code-line-numbers="|2|5|6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href=""></a><span class="co">#Call the package</span></span>
-<span id="cb8-2"><a href=""></a><span class="fu">library</span>(qualtRics)</span>
-<span id="cb8-3"><a href=""></a></span>
-<span id="cb8-4"><a href=""></a><span class="co">#This is an initial set-up - only need to do once per machine!</span></span>
-<span id="cb8-5"><a href=""></a><span class="fu">qualtrics_api_credentials</span>(<span class="at">api_key =</span> <span class="st">"YOUR_KEY_HERE"</span>, </span>
-<span id="cb8-6"><a href=""></a>                          <span class="at">base_url =</span> <span class="st">"URL.GOES.HERE"</span>,</span>
-<span id="cb8-7"><a href=""></a>                          <span class="at">install =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb9" data-code-line-numbers="|2|5|6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href=""></a><span class="co">#Call the package</span></span>
+<span id="cb9-2"><a href=""></a><span class="fu">library</span>(qualtRics)</span>
+<span id="cb9-3"><a href=""></a></span>
+<span id="cb9-4"><a href=""></a><span class="co">#This is an initial set-up - only need to do once per machine!</span></span>
+<span id="cb9-5"><a href=""></a><span class="fu">qualtrics_api_credentials</span>(<span class="at">api_key =</span> <span class="st">"YOUR_KEY_HERE"</span>, </span>
+<span id="cb9-6"><a href=""></a>                          <span class="at">base_url =</span> <span class="st">"URL.GOES.HERE"</span>,</span>
+<span id="cb9-7"><a href=""></a>                          <span class="at">install =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <aside class="notes">
 <p>Show them where to get API key, and what the base URL is Let them know they may need to request permission from their org, first, before can get API key Screen-grab my screen - hash out the API key (ask Jordan about this)</p>
@@ -1090,21 +1114,7 @@ Let’s get started!
 <section id="example-use-case-3" class="slide level2">
 <h2>Example Use Case</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href=""></a><span class="co">#See what surveys are associated with your account</span></span>
-<span id="cb9-2"><a href=""></a><span class="co">#Here, saving to an object</span></span>
-<span id="cb9-3"><a href=""></a>surveys <span class="ot">&lt;-</span> <span class="fu">all_surveys</span>()</span>
-<span id="cb9-4"><a href=""></a></span>
-<span id="cb9-5"><a href=""></a><span class="co">#We can see what the column names are</span></span>
-<span id="cb9-6"><a href=""></a><span class="fu">names</span>(surveys)</span>
-<span id="cb9-7"><a href=""></a></span>
-<span id="cb9-8"><a href=""></a><span class="co">#And then see what surveys we have</span></span>
-<span id="cb9-9"><a href=""></a>surveys<span class="sc">$</span>name</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-</section>
-<section id="example-use-case-4" class="slide level2">
-<h2>Example Use Case</h2>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb10" data-code-line-numbers="3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href=""></a><span class="co">#See what surveys are associated with your account</span></span>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href=""></a><span class="co">#See what surveys are associated with your account</span></span>
 <span id="cb10-2"><a href=""></a><span class="co">#Here, saving to an object</span></span>
 <span id="cb10-3"><a href=""></a>surveys <span class="ot">&lt;-</span> <span class="fu">all_surveys</span>()</span>
 <span id="cb10-4"><a href=""></a></span>
@@ -1115,10 +1125,10 @@ Let’s get started!
 <span id="cb10-9"><a href=""></a>surveys<span class="sc">$</span>name</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
-<section id="example-use-case-5" class="slide level2">
+<section id="example-use-case-4" class="slide level2">
 <h2>Example Use Case</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb11" data-code-line-numbers="6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href=""></a><span class="co">#See what surveys are associated with your account</span></span>
+<div class="sourceCode cell-code" id="cb11" data-code-line-numbers="3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href=""></a><span class="co">#See what surveys are associated with your account</span></span>
 <span id="cb11-2"><a href=""></a><span class="co">#Here, saving to an object</span></span>
 <span id="cb11-3"><a href=""></a>surveys <span class="ot">&lt;-</span> <span class="fu">all_surveys</span>()</span>
 <span id="cb11-4"><a href=""></a></span>
@@ -1127,6 +1137,20 @@ Let’s get started!
 <span id="cb11-7"><a href=""></a></span>
 <span id="cb11-8"><a href=""></a><span class="co">#And then see what surveys we have</span></span>
 <span id="cb11-9"><a href=""></a>surveys<span class="sc">$</span>name</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="example-use-case-5" class="slide level2">
+<h2>Example Use Case</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb12" data-code-line-numbers="6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href=""></a><span class="co">#See what surveys are associated with your account</span></span>
+<span id="cb12-2"><a href=""></a><span class="co">#Here, saving to an object</span></span>
+<span id="cb12-3"><a href=""></a>surveys <span class="ot">&lt;-</span> <span class="fu">all_surveys</span>()</span>
+<span id="cb12-4"><a href=""></a></span>
+<span id="cb12-5"><a href=""></a><span class="co">#We can see what the column names are</span></span>
+<span id="cb12-6"><a href=""></a><span class="fu">names</span>(surveys)</span>
+<span id="cb12-7"><a href=""></a></span>
+<span id="cb12-8"><a href=""></a><span class="co">#And then see what surveys we have</span></span>
+<span id="cb12-9"><a href=""></a>surveys<span class="sc">$</span>name</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell">
 <div class="cell-output cell-output-stdout">
@@ -1138,15 +1162,15 @@ Let’s get started!
 <section id="example-use-case-6" class="slide level2">
 <h2>Example Use Case</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb13" data-code-line-numbers="9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href=""></a><span class="co">#See what surveys are associated with your account</span></span>
-<span id="cb13-2"><a href=""></a><span class="co">#Here, saving to an object</span></span>
-<span id="cb13-3"><a href=""></a>surveys <span class="ot">&lt;-</span> <span class="fu">all_surveys</span>()</span>
-<span id="cb13-4"><a href=""></a></span>
-<span id="cb13-5"><a href=""></a><span class="co">#We can see what the column names are</span></span>
-<span id="cb13-6"><a href=""></a><span class="fu">names</span>(surveys)</span>
-<span id="cb13-7"><a href=""></a></span>
-<span id="cb13-8"><a href=""></a><span class="co">#And then see what surveys we have</span></span>
-<span id="cb13-9"><a href=""></a>surveys<span class="sc">$</span>name</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb14" data-code-line-numbers="9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href=""></a><span class="co">#See what surveys are associated with your account</span></span>
+<span id="cb14-2"><a href=""></a><span class="co">#Here, saving to an object</span></span>
+<span id="cb14-3"><a href=""></a>surveys <span class="ot">&lt;-</span> <span class="fu">all_surveys</span>()</span>
+<span id="cb14-4"><a href=""></a></span>
+<span id="cb14-5"><a href=""></a><span class="co">#We can see what the column names are</span></span>
+<span id="cb14-6"><a href=""></a><span class="fu">names</span>(surveys)</span>
+<span id="cb14-7"><a href=""></a></span>
+<span id="cb14-8"><a href=""></a><span class="co">#And then see what surveys we have</span></span>
+<span id="cb14-9"><a href=""></a>surveys<span class="sc">$</span>name</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell">
 <div class="cell-output cell-output-stdout">
@@ -1161,8 +1185,8 @@ Let’s get started!
 <section id="example-use-case-7" class="slide level2">
 <h2>Example Use Case</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href=""></a><span class="co">#Get survey data</span></span>
-<span id="cb15-2"><a href=""></a>survey_data <span class="ot">&lt;-</span> <span class="fu">fetch_survey</span>(<span class="at">surveyID =</span> surveys<span class="sc">$</span>id[<span class="dv">8</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href=""></a><span class="co">#Get survey data</span></span>
+<span id="cb16-2"><a href=""></a>survey_data <span class="ot">&lt;-</span> <span class="fu">fetch_survey</span>(<span class="at">surveyID =</span> surveys<span class="sc">$</span>id[<span class="dv">8</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
   |                                                                            
@@ -1188,11 +1212,11 @@ Let’s get started!
 <section id="example-use-case-8" class="slide level2">
 <h2>Example Use Case</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href=""></a><span class="co">#Save question names to an object</span></span>
-<span id="cb17-2"><a href=""></a>questions <span class="ot">&lt;-</span> <span class="fu">survey_questions</span>(<span class="at">surveyID =</span> surveys<span class="sc">$</span>id[<span class="dv">8</span>])</span>
-<span id="cb17-3"><a href=""></a></span>
-<span id="cb17-4"><a href=""></a><span class="co">#See what the questions are</span></span>
-<span id="cb17-5"><a href=""></a><span class="fu">print</span>(questions)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href=""></a><span class="co">#Save question names to an object</span></span>
+<span id="cb18-2"><a href=""></a>questions <span class="ot">&lt;-</span> <span class="fu">survey_questions</span>(<span class="at">surveyID =</span> surveys<span class="sc">$</span>id[<span class="dv">8</span>])</span>
+<span id="cb18-3"><a href=""></a></span>
+<span id="cb18-4"><a href=""></a><span class="co">#See what the questions are</span></span>
+<span id="cb18-5"><a href=""></a><span class="fu">print</span>(questions)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 1 × 4
   qid   qname question                                                force_resp
@@ -1204,18 +1228,18 @@ Let’s get started!
 <section id="example-use-case-9" class="slide level2">
 <h2>Example Use Case</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb19" data-code-line-numbers="|2|3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href=""></a><span class="co">#Now, we can do things!</span></span>
-<span id="cb19-2"><a href=""></a><span class="fu">table</span>(survey_data<span class="sc">$</span>Q1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb20" data-code-line-numbers="|2|3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href=""></a><span class="co">#Now, we can do things!</span></span>
+<span id="cb20-2"><a href=""></a><span class="fu">table</span>(survey_data<span class="sc">$</span>Q1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
                                Excel                       SPSS dropdowns 
-                                   0                                    0 
+                                  16                                    2 
                          SPSS syntax                                  SAS 
-                                   0                                    0 
+                                   4                                    1 
                                    R                               Python 
-                                   0                                    0 
+                                   8                                    0 
                 Something not listed What is this 'analyze' you speak of? 
-                                   0                                    1 </code></pre>
+                                   4                                    6 </code></pre>
 </div>
 </div>
 <aside class="notes">
@@ -1249,9 +1273,42 @@ Let’s get started!
 <p>Last bit of data!</p>
 
 <img data-src="Q3Q4.png" class="quarto-figure quarto-figure-center r-stretch"></section>
+<section id="you-promised-flexibility" class="slide level2">
+<h2>You Promised Flexibility!</h2>
+<p>creative_name &lt;- read.csv(“some/data/file.csv”)</p>
+</section>
+<section id="you-promised-flexibility-1" class="slide level2">
+<h2>You Promised Flexibility!</h2>
+<p><font color="red">creative_name</font> &lt;- read.csv(“some/data/file.csv”)</p>
+</section>
+<section id="you-promised-flexibility-2" class="slide level2">
+<h2>You Promised Flexibility!</h2>
+<p>creative_name <font color="red">&lt;-</font> read.csv(“some/data/file.csv”)</p>
+</section>
+<section id="you-promised-flexibility-3" class="slide level2">
+<h2>You Promised Flexibility!</h2>
+<p>creative_name &lt;- <font color="red">read.csv</font>(“some/data/file.csv”)</p>
+</section>
+<section id="you-promised-flexibility-4" class="slide level2">
+<h2>You Promised Flexibility!</h2>
+<p>creative_name &lt;- read.csv<font color="red">(“some/data/file.csv”)</font></p>
+</section>
+<section id="you-promised-flexibility-5" class="slide level2">
+<h2>You Promised Flexibility!</h2>
+<p>creative_name$some_variable</p>
+</section>
+<section id="you-promised-flexibility-6" class="slide level2">
+<h2>You Promised Flexibility!</h2>
+<p><font color="red">creative_name</font>$some_variable</p>
+</section>
+<section id="you-promised-flexibility-7" class="slide level2">
+<h2>You Promised Flexibility!</h2>
+<p>creative_name$<font color="red">some_variable</font></p>
+</section>
 <section id="live-demo-time" class="slide level2">
 <h2>Live Demo time</h2>
 <p>Now, let’s run some code, using the data you have so kindly provided</p>
+<p>If you want to run it on your computer, access some fake data here: <a href="https://bit.ly/3NINVha" class="uri">https://bit.ly/3NINVha</a></p>
 <aside class="notes">
 <p>Switch to R script ADD LINK! “If you want to follow along, here’s some simulated data that has the same characteristics to our data”</p>
 <style type="text/css">
@@ -1268,12 +1325,11 @@ Let’s get started!
 </section>
 <section id="what-questions-can-i-answer-for-you-now" class="slide level2">
 <h2>What questions can I answer for you now?</h2>
-<p><strong>Add questioning owl? OR! Tilted head dogs comic</strong></p>
-</section>
+
+<img data-src="dogs.jpg" class="r-stretch"></section>
 <section id="my-contact-info" class="slide level2">
 <h2>My Contact Info</h2>
 <p>Laura Lambert <a href="mailto:laycocla@jmu.edu" class="email">laycocla@jmu.edu</a></p>
-<p>Add QR code to GitHub page for this, plus other resources Maybe add resources in the README on GitHub?</p>
 <div class="quarto-auto-generated-content">
 <div class="footer footer-default">
 
@@ -1305,7 +1361,7 @@ Let’s get started!
       // https://revealjs.com/config/
       Reveal.initialize({
 'controlsAuto': true,
-'previewLinksAuto': false,
+'previewLinksAuto': true,
 'pdfSeparateFragments': false,
 'autoAnimateEasing': "ease",
 'autoAnimateDuration': 1,
